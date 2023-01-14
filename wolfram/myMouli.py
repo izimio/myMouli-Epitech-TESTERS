@@ -51,7 +51,7 @@ tricky_tests = [tricky_err1]
 
 
 def do_in_file(cmd):
-   ret = os.system("./refBin " + cmd + " > " + "trace/trueTrace")
+   ret = os.system("./wolfram " + cmd + " > " + "trace/trueTrace")
    if ret == 0:
        print_red("KO" + " on " + cmd)
    else:

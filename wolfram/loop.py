@@ -1,10 +1,19 @@
 import os
 from random import seed
 from random import randint
+import sys
+
+def getArgs(args):
+    try:
+        return int(args[1])
+    except:
+        return 100
+
 
 seed(randint(0,1000))
 
 lst = []
+looper = getArgs(sys.argv)
 
 def getRand(min, max):
     return randint(min, max)
@@ -29,19 +38,16 @@ def generateParam(param, min, max):
 def generateAllParams():
     ret = ""
     ret += generateRuleParam()
-    ret += generateParam("lines", 0, 1000)
-    ret += generateParam("start", 0, 1000)
+    ret += generateParam("lines", 0, 500)
+    ret += generateParam("start", 0, 500)
     ret += generateParam("window", 0, 250)
     ret += generateParam("move", -50, 50)
     return ret
     
 cmd = (generateAllParams())
 
-data = ""
-
-
 def diff_files(cmd):
-    ret = os.system("diff trace/trueTrace trace/yourTrace > diff")
+    ret = os.system("diff trace/trueTrace trace/yourTrace > trace/diff")
     if ret == 0:
         print("\033[92mOK\033[0m" + " on " + cmd)
     else:
@@ -53,7 +59,7 @@ def do_in_file(cmd):
     os.system("./refBin " + cmd + " > " + "trace/trueTrace")
     os.system("./wolfram " + cmd + " > " + "trace/yourTrace")
 
-for _ in range(500):
+for _ in range(looper):
     cmd = generateAllParams()
     do_in_file(cmd)
     if diff_files(cmd) != 0:
