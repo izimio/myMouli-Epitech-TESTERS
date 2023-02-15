@@ -65,6 +65,21 @@ def simple_commands_tests(socket):
     test("CDUP", socket, "CDUP", 200)
     test("NOOP", socket, "NOOP", 200)
     test("HELP", socket, "HELP", 214)
+    test("NOOP", socket, "NOOP", 200)
+    test("QUIT", socket, "QUIT", 221)
+
+def simple_commands_tests_refused(socket):
+    test("PWD", socket, "PWD", 530)
+    test("CWD", socket, "CWD", 530)
+    test("CWD missing parameter", socket, "CWD", 530)
+    test("CWD ../", socket, "CWD ../", 530)
+    test("CWD /", socket, "CWD /", 530)
+    test("CWD /home", socket, "CWD /home", 530)
+    test("CDUP", socket, "CDUP", 530)
+    test("NOOP", socket, "NOOP", 530)
+    test("HELP", socket, "HELP", 530)
+    test("NOOP", socket, "NOOP", 530)
+    test("QUIT", socket, "QUIT", 221)
 
 ## === MAIN === ##
 if len(sys.argv) < 3:
@@ -74,14 +89,22 @@ if len(sys.argv) < 3:
 server_host = sys.argv[1]
 server_port = int(sys.argv[2])
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client_socket2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 all_tests = 0
 passed_tests = 0
 
 
 preliminaries(client_socket)
 
+print("==== Connection tests ====\n")
 connection_tests(client_socket)
+print("==== Simple command ====\n")
 simple_commands_tests(client_socket)
+
+preliminaries(client_socket2)
+print("==== Simple command refused ====\n")
+simple_commands_tests_refused(client_socket2)
+
 print("Passed " + str(passed_tests) + "/" + str(all_tests) + " tests")
 client_socket.close()
 
