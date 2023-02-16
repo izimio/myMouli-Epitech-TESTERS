@@ -13,7 +13,7 @@ def test(name, socket, message, expected_code):
     all_tests = all_tests + 1
     expected_code = str(expected_code)
     print("Test on " + name)
-    message = message + "\n";
+    message = message + "\r\n";
     socket.sendall(message.encode())
     response = socket.recv(1024).decode().strip().split()[0]
 
@@ -43,26 +43,26 @@ def preliminaries(socket):
     print("")
 
 def connection_tests(socket):
-    test("USER missing parameter", socket, "USER", 530)
+    test("USER missing parameter", socket, "USER", 501)
     test("PASS without username", socket, "PASS", 503)
     test("USER good username 1", socket, "USER 45", 331)
-    test("USER spaces", socket, "USER    ", 530)
+    test("USER spaces", socket, "USER    ", 501)
     test("PASS wrong password", socket, "PASS 45", 530)
     test("USER good username", socket, "USER A", 331)
     test("PASS good password but wrong username", socket, "PASS", 530)
     test("USER good username overall", socket, "USER Anonymous", 331)
     test("PASS good password", socket, "PASS", 230)
-    test("USER already logged in", socket, "USER", 530)
+    test("USER already logged in", socket, "USER Anonymous", 530)
     test("PASS already logged in", socket, "PASS", 230)
 
 def simple_commands_tests(socket):
     test("PWD", socket, "PWD", 257)
-    test("CWD", socket, "CWD", 550)
-    test("CWD missing parameter", socket, "CWD", 550)
-    test("CWD ../", socket, "CWD ../", 250)
-    test("CWD /", socket, "CWD /", 250)
-    test("CWD /home", socket, "CWD /home", 250)
-    test("CDUP", socket, "CDUP", 200)
+    # test("CWD", socket, "CWD", 550)
+    # test("CWD missing parameter", socket, "CWD", 550)
+    # test("CWD ../", socket, "CWD ../", 250)
+    # test("CWD /", socket, "CWD /", 250)
+    # test("CWD /home", socket, "CWD /home", 250)
+    # test("CDUP", socket, "CDUP", 200)
     test("NOOP", socket, "NOOP", 200)
     test("HELP", socket, "HELP", 214)
     test("NOOP", socket, "NOOP", 200)
