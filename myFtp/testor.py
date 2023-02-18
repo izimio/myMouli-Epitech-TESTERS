@@ -322,12 +322,6 @@ def init_tree():
         with open("file", "w") as f:
             f.write("Hello World!\ndump")
 
-def clean_tree():
-    if os.path.exists("src"):
-        os.removedirs("src")
-    if os.path.exists("file"):
-        os.remove("file")
-
 ## === MAIN === ##
 if len(sys.argv) < 3 or sys.argv[1] == "-h" or sys.argv[1] == "--help":
     print("Usage: python testor.py <host> <port>")
@@ -383,5 +377,3 @@ else:
     print_in_red("---------------------")
     print("Passed " + str(passed_tests) + "/" + str(all_tests) + " tests")
 client_socket.close()
-
-clean_tree()
