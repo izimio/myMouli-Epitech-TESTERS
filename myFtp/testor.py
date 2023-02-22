@@ -174,7 +174,7 @@ def list_tests(socket, mode):
     data_socket = None
     data_socket = get_right_data_soket(data_socket, socket, mode)
     if data_socket is None:
-        print_in_red("KO: PASV/PORT test failed, can't continue testing")
+        print_in_red("KO: PASV/PORT test failed, can't continue testing LIST")
         return
 
     test("LIST", socket, "LIST", 501)
@@ -193,7 +193,7 @@ def retr_tests(socket, mode):
     data_socket = None
     data_socket = get_right_data_soket(data_socket, socket, mode)
     if data_socket is None:
-        print_in_red("KO: PASV/PORT test failed, can't continue testing")
+        print_in_red("KO: PASV/PORT test failed, can't continue testing RETR")
         return
 
     test("CWD ..", socket, "CWD ..", 250)
@@ -220,7 +220,7 @@ def stor_test(socket, mode):
     data_socket = None
     data_socket = get_right_data_soket(data_socket, socket, mode)
     if data_socket is None:
-        print_in_red("KO: PASV/PORT test failed, can't continue testing")
+        print_in_red("KO: PASV/PORT test failed, can't continue testing STOR")
         return
     
     test("STOR", socket, "STOR", 501)
@@ -300,10 +300,12 @@ def connect_to_port(prev_socket):
     socket1.bind((server_host, 0))
     socket1.listen(1)
     port = socket1.getsockname()[1]
+    socket1.settimeout(2)
     test("PORT " + str(port), prev_socket, "PORT " + str(port), 200)
     try:
         socket2, addr = socket1.accept()
     except:
+        print_in_red("KO: Can't connect to port (timeout)")
         return None
     return socket2
 

@@ -22,7 +22,7 @@ def get_port_addr(buff):
         tmp = buff.split("(")[1].split(")")[0].split(",")
         return int(tmp[1]) * 256 + int(tmp[2])
     except:
-        return -1
+        return -1 
 ## /====/ Print functions /====/
 
 ## ==== Utils functions ====
