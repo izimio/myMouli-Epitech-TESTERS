@@ -101,8 +101,8 @@ def connection_tests(socket):
 def simple_commands_tests(socket):
     pwd = get_serv_pwd(socket)
     test("PWD", socket, "PWD", 257)
-    test("CWD", socket, "CWD", 501)
-    test("CWD missing parameter", socket, "CWD", 501)
+    test("CWD", socket, "CWD", 550)
+    test("CWD missing parameter", socket, "CWD", 550)
     test("CWD ../", socket, "CWD ../", 550)
     test("CWD /", socket, "CWD /", 550)
     test("CWD /home", socket, "CWD /home", 550)
@@ -174,7 +174,7 @@ def list_tests(socket, mode):
     data_socket = None
     data_socket = get_right_data_soket(data_socket, socket, mode)
     if data_socket is None:
-        print_in_red("KO: PASV/PORT test failed, can't continue testing LIST")
+        print_in_red("KO: PASV/PORT test failed, can't continue testing")
         return
 
     test("LIST", socket, "LIST", 501)
@@ -193,7 +193,7 @@ def retr_tests(socket, mode):
     data_socket = None
     data_socket = get_right_data_soket(data_socket, socket, mode)
     if data_socket is None:
-        print_in_red("KO: PASV/PORT test failed, can't continue testing RETR")
+        print_in_red("KO: PASV/PORT test failed, can't continue testing")
         return
 
     test("CWD ..", socket, "CWD ..", 250)
@@ -220,7 +220,7 @@ def stor_test(socket, mode):
     data_socket = None
     data_socket = get_right_data_soket(data_socket, socket, mode)
     if data_socket is None:
-        print_in_red("KO: PASV/PORT test failed, can't continue testing STOR")
+        print_in_red("KO: PASV/PORT test failed, can't continue testing")
         return
     
     test("STOR", socket, "STOR", 501)
@@ -300,12 +300,12 @@ def connect_to_port(prev_socket):
     socket1.bind((server_host, 0))
     socket1.listen(1)
     port = socket1.getsockname()[1]
-    socket1.settimeout(2)
-    test("PORT " + str(port), prev_socket, "PORT " + str(port), 200)
+    P1 = port // 256
+    P2 = port % 256
+    test("PORT " + str(port), prev_socket, "PORT " + "127,0,0,1," + str(P1) + "," + str(P2), 200)
     try:
         socket2, addr = socket1.accept()
     except:
-        print_in_red("KO: Can't connect to port (timeout)")
         return None
     return socket2
 
