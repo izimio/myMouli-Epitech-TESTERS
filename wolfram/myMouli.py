@@ -7,11 +7,12 @@ seed(randint(0,1000))
 lst = []
 
 ## Error Rule
-rule_err1 = "--rule 91 --lines 1"
-rule_err2 = "-rule 110 --lines 1"
-rule_err3 = "--rule 3O --lines 1"
+rule_err1= "---rule 110 --lines 1"
+rule_err2= "rule 110 --lines 1"
+rule_err3 = "-rule 110 --lines 1"
+rule_err4 = "--rule 3O --lines 1"
 
-rule_tests = [rule_err1, rule_err2, rule_err3]
+rule_tests = [rule_err1, rule_err2, rule_err3, rule_err4]
 
 ## Error Lines
 lines_err1 = " --rules 30 --lines 10A"
