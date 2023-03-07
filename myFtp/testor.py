@@ -177,7 +177,7 @@ def list_tests(socket, mode):
         print_in_red("KO: PASV/PORT test failed, can't continue testing")
         return
 
-    test("LIST", socket, "LIST", 501)
+    test("LIST", socket, "LIST", 150)
     data_socket = get_right_data_soket(data_socket, socket, mode)
     test("LIST ./", socket, "LIST ./", 150)
     test("LIST ./", socket, "LIST ./", 425)
