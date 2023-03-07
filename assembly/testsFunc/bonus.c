@@ -8,7 +8,8 @@
 int good = 0;
 int nums = 0;
 
-int is_anagram(char *str1, char *str2) {
+int is_anagram(char *str1, char *str2)
+{
     char buff[256] = {0};
     int i = 0;
 
@@ -158,7 +159,8 @@ int main()
     }
 
     printf("\n\n");
-    printf("========================================\033[32mBonus\033[0m========================================\n");
+    printf("========================================\033[32mBonus\033[0m======"
+           "==================================\n");
     printf(" ===== TEST FFS =====\n");
     INT_test_printf("ffs(0)", "%d", "%d", ffs(0), my_ffs(0));
     INT_test_printf("ffs(1)", "%d", "%d", ffs(1), my_ffs(1));
@@ -178,28 +180,48 @@ int main()
 
     printf("\n\n");
     printf(" ===== TEST INDEX =====\n");
-    STR_test_printf("index(\"hello\", 'h')", "%s", "%s", index("hello", 'h'), my_index("hello", 'h'));
-    STR_test_printf("index(\"hello\", 'e')", "%s", "%s", index("hello", 'e'), my_index("hello", 'e'));
-    STR_test_printf("index(\"hello\", 'l')", "%s", "%s", index("hello", 'l'), my_index("hello", 'l'));
-    STR_test_printf("index(\"hello\", 'o')", "%s", "%s", index("hello", 'o'), my_index("hello", 'o'));
-    STR_test_printf("index(\"hello\", 'a')", "%s", "%s", index("hello", 'a'), my_index("hello", 'a'));
-    STR_test_printf("index(\"hello\", 'z')", "%s", "%s", index("hello", 'z'), my_index("hello", 'z'));
-    STR_test_printf("index(\"hello\", 0)", "%s", "%s", index("hello", 0), my_index("hello", 0));
-    STR_test_printf("index(\"hello\", 1)", "%s", "%s", index("hello", 1), my_index("hello", 1));
-    STR_test_printf("index(\"\", 0)", "%s", "%s", index("", 0), my_index("", 0));
+    STR_test_printf("index(\"hello\", 'h')", "%s", "%s", index("hello", 'h'),
+    my_index("hello", 'h'));
+    STR_test_printf("index(\"hello\", 'e')", "%s", "%s", index("hello", 'e'),
+    my_index("hello", 'e'));
+    STR_test_printf("index(\"hello\", 'l')", "%s", "%s", index("hello", 'l'),
+    my_index("hello", 'l'));
+    STR_test_printf("index(\"hello\", 'o')", "%s", "%s", index("hello", 'o'),
+    my_index("hello", 'o'));
+    STR_test_printf("index(\"hello\", 'a')", "%s", "%s", index("hello", 'a'),
+    my_index("hello", 'a'));
+    STR_test_printf("index(\"hello\", 'z')", "%s", "%s", index("hello", 'z'),
+    my_index("hello", 'z'));
+    STR_test_printf("index(\"hello\", 0)", "%s", "%s", index("hello", 0),
+    my_index("hello", 0));
+    STR_test_printf("index(\"hello\", 1)", "%s", "%s", index("hello", 1),
+    my_index("hello", 1));
+    STR_test_printf(
+    "index(\"\", 0)", "%s", "%s", index("", 0), my_index("", 0));
 
     printf("\n\n");
     printf(" ===== TEST Rrindex =====\n");
-    STR_test_printf("rindex(\"hello\", 'h')", "%s", "%s", rindex("hello", 'h'), my_rindex("hello", 'h'));
-    STR_test_printf("rindex(\"hello\", 'e')", "%s", "%s", rindex("hello", 'e'), my_rindex("hello", 'e'));
-    STR_test_printf("rindex(\"hello\", 'l')", "%s", "%s", rindex("hello", 'l'), my_rindex("hello", 'l'));
-    STR_test_printf("rindex(\"hello\", 'o')", "%s", "%s", rindex("hello", 'o'), my_rindex("hello", 'o'));
-    STR_test_printf("rindex(\"hello\", 'a')", "%s", "%s", rindex("hello", 'a'), my_rindex("hello", 'a'));
-    STR_test_printf("rindex(\"hello\", 'z')", "%s", "%s", rindex("hello", 'z'), my_rindex("hello", 'z'));
-    STR_test_printf("rindex(\"hello\", 0)", "%s", "%s", rindex("hello", 0), my_rindex("hello", 0));
-    STR_test_printf("rindex(\"hello\", 1)", "%s", "%s", rindex("hello", 1), my_rindex("hello", 1));
-    STR_test_printf("rindex(\"\", 0)", "%s", "%s", rindex("", 0), my_rindex("", 0));
-    STR_test_printf("rindex(\"helllllllllllllllo         l\", 'l')", "%s", "%s", rindex("helllllllllllllllo         l", 'l'), my_rindex("helllllllllllllllo         l", 'l'));
+    STR_test_printf("rindex(\"hello\", 'h')", "%s", "%s", rindex("hello", 'h'),
+    my_rindex("hello", 'h'));
+    STR_test_printf("rindex(\"hello\", 'e')", "%s", "%s", rindex("hello", 'e'),
+    my_rindex("hello", 'e'));
+    STR_test_printf("rindex(\"hello\", 'l')", "%s", "%s", rindex("hello", 'l'),
+    my_rindex("hello", 'l'));
+    STR_test_printf("rindex(\"hello\", 'o')", "%s", "%s", rindex("hello", 'o'),
+    my_rindex("hello", 'o'));
+    STR_test_printf("rindex(\"hello\", 'a')", "%s", "%s", rindex("hello", 'a'),
+    my_rindex("hello", 'a'));
+    STR_test_printf("rindex(\"hello\", 'z')", "%s", "%s", rindex("hello", 'z'),
+    my_rindex("hello", 'z'));
+    STR_test_printf("rindex(\"hello\", 0)", "%s", "%s", rindex("hello", 0),
+    my_rindex("hello", 0));
+    STR_test_printf("rindex(\"hello\", 1)", "%s", "%s", rindex("hello", 1),
+    my_rindex("hello", 1));
+    STR_test_printf(
+    "rindex(\"\", 0)", "%s", "%s", rindex("", 0), my_rindex("", 0));
+    STR_test_printf("rindex(\"helllllllllllllllo         l\", 'l')", "%s",
+    "%s", rindex("helllllllllllllllo         l", 'l'),
+    my_rindex("helllllllllllllllo         l", 'l'));
 
     printf("\n\n");
     printf(" ===== TEST MEMFROB =====\n");
@@ -207,13 +229,17 @@ int main()
     char *str2 = strdup("hello");
     memfrob(str, 5);
 
-    STR_test_printf("memfrob(\"hello\", 5)", "%s", "%s", str, my_memfrob(str2, 5));
+    STR_test_printf(
+    "memfrob(\"hello\", 5)", "%s", "%s", str, my_memfrob(str2, 5));
     memfrob(str, 5);
-    STR_test_printf("memfrob(\"hello\", 5)", "%s", "%s", str, my_memfrob(str2, 5));
+    STR_test_printf(
+    "memfrob(\"hello\", 5)", "%s", "%s", str, my_memfrob(str2, 5));
     memfrob(str, 0);
-    STR_test_printf("memfrob(\"hello\", 0)", "%s", "%s", str, my_memfrob(str2, 0));
+    STR_test_printf(
+    "memfrob(\"hello\", 0)", "%s", "%s", str, my_memfrob(str2, 0));
     memfrob(str, 2);
-    STR_test_printf("memfrob(\"hello\", 2)", "%s", "%s", str, my_memfrob(str2, 2));
+    STR_test_printf(
+    "memfrob(\"hello\", 2)", "%s", "%s", str, my_memfrob(str2, 2));
 
     printf("\n\n");
     printf(" ===== TEST STRFRY =====\n");
@@ -222,18 +248,22 @@ int main()
     fries = strdup("Hello world");
     char *second_fry = my_strfry(fries);
 
-    INT_test_printf("Is anagram #1 ?", "%d", "%d", 1, is_anagram(first_fry, "Hello world"));
-    INT_test_printf("Is anagram #2 ?", "%d", "%d", 1, is_anagram(second_fry, "Hello world"));
-    INT_test_printf("Is shuffled #1 ?", "%d", "%d", 1, !!strcmp(first_fry, "Hello world"));
-    INT_test_printf("Is shuffled #2 ?", "%d", "%d", 1, !!strcmp(second_fry, "Hello world"));
-    INT_test_printf("Is random ?", "%d", "%d", 1, !!strcmp(first_fry, second_fry));
+    INT_test_printf(
+    "Is anagram #1 ?", "%d", "%d", 1, is_anagram(first_fry, "Hello world"));
+    INT_test_printf(
+    "Is anagram #2 ?", "%d", "%d", 1, is_anagram(second_fry, "Hello world"));
+    INT_test_printf(
+    "Is shuffled #1 ?", "%d", "%d", 1, !!strcmp(first_fry, "Hello world"));
+    INT_test_printf(
+    "Is shuffled #2 ?", "%d", "%d", 1, !!strcmp(second_fry, "Hello world"));
+    INT_test_printf(
+    "Is random ?", "%d", "%d", 1, !!strcmp(first_fry, second_fry));
     fries = strdup("A");
     first_fry = my_strfry(fries);
     STR_test_printf("strfry(\"A\")", "%s", "%s", "A", my_strfry(fries));
     fries = strdup("");
     first_fry = my_strfry(fries);
     STR_test_printf("strfry(\"\")", "%s", "%s", "", my_strfry(fries));
-
 
     dlclose(handle);
     printf(" ===== RESULT =====\n");

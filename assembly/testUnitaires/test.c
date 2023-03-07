@@ -5,10 +5,10 @@
 ** main
 */
 
-#include <dlfcn.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <criterion/criterion.h>
+#include <dlfcn.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int (*_strlen)(const char *);
 char *(*_strchr)(const char *, int);
@@ -21,10 +21,10 @@ int (*_strncmp)(const char *, const char *, size_t);
 int (*_strcasecmp)(const char *, const char *);
 char *(*_strstr)(const char *, const char *);
 char *(*_strpbrk)(const char *, const char *);
-size_t (*_strcspn)(const char *, const char *); 
+size_t (*_strcspn)(const char *, const char *);
 
-
-void setup(void) {
+void setup(void)
+{
 
     void *handle = dlopen("./libasm.so", RTLD_LAZY);
     if (!handle) {
@@ -90,7 +90,6 @@ Test(memcpy1, noneCopy, .init = setup)
     free(source);
     free(destination);
 }
-
 
 // ====== TEST MEMMOVE =========== //
 
@@ -165,7 +164,6 @@ Test(memset, setNoneCharacter, .init = setup)
     cr_assert_str_eq(_memset(string, 'A', 0), "Hello You");
 }
 
-
 // ========== TEST STRRCHR ======= //
 
 Test(_strrchr, findCharacter, .init = setup)
@@ -190,7 +188,6 @@ Test(_strrchr, characterZero, .init = setup)
 }
 
 // ========== TEST STRCASECMP ======= //
-
 
 Test(strcasecmp, sameStrings, .init = setup)
 {
@@ -232,9 +229,7 @@ Test(strcasecmp, differentStrings, .init = setup)
     cr_assert_eq(_strcasecmp(s1, s2), -2);
 }
 
-
 // ========== TEST STRCHR ======= //
-
 
 Test(strchr, presentCharacter, .init = setup)
 {
@@ -251,9 +246,7 @@ Test(strchr, emptyString, .init = setup)
     cr_assert(strchr("", '\0') == _strchr("", '\0'));
 }
 
-
 // ========== TEST STRCMP ======= //
-
 
 Test(strcmp, sameStrings, .init = setup)
 {
@@ -287,9 +280,7 @@ Test(strcmp, differentStrings, .init = setup)
     cr_assert_eq(_strcmp(s1, s2), -2);
 }
 
-
 // ======== TEST STRCSPN ============== //
-
 
 Test(strcspn, characterOccurrence, .init = setup)
 {
@@ -321,7 +312,6 @@ Test(strcspn, nullOccurrence, .init = setup)
 
 // =========== TEST STRLEN ========= //
 
-
 Test(strlen, simpleString, .init = setup)
 {
     char *string = "Hello World";
@@ -336,9 +326,7 @@ Test(strlen, emptyString, .init = setup)
     cr_assert(strlen(string) == _strlen(string));
 }
 
-
 // ========== TEST STRNCMP ======== //
-
 
 Test(strncmp, sameStrings, .init = setup)
 {
@@ -390,7 +378,6 @@ Test(strncmp, sizeZero, .init = setup)
 
 // ========= TEST STRPBRK ========== //
 
-
 Test(strpbrk, characterOccurrence, .init = setup)
 {
     char *string = "Hello World";
@@ -419,9 +406,7 @@ Test(strpbrk, nullOccurrence, .init = setup)
     cr_assert_null(_strpbrk(string, ""), "cacao");
 }
 
-
 // ======== TEST STRSTR ========= //
-
 
 Test(strstr, findNeedleWord, .init = setup)
 {
