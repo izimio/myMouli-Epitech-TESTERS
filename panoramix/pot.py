@@ -31,20 +31,21 @@ def check_villager_behavior_pot(arr, i):
     return True
 
 def check_no_over_portion():
-
     err = 0
     trace = execute_and_get_trace(get_random_params(5, 700, 7, 20))
     for i in range(5):
         arr = get_arr_of_villager(trace, "Villager " + str(i) + ":")
         if not check_villager_behavior_easy(arr, 7, i):
             err += 1
+    if err == 0:
+        print_ok("1/2 OK")
     trace = execute_and_get_trace(get_random_params(5, 5, 7, 20))
     for i in range(5):
         arr = get_arr_of_villager(trace, "Villager " + str(i) + ":")
         if not check_villager_behavior_pot(arr, i):
             err += 1
     if err == 0:
-        print_ok("No villager over portionned or under portionned")
+        print_ok("2/2 OK | No villager over portionned or under portionned")
 
 def check_pot():
     print_yellow("<=====> Pot tests <=====>")

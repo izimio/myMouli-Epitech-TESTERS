@@ -9,6 +9,7 @@ def get_druid_phrase(max, nb):
 
 def check_druid_array(arr, size):
     max = size
+    print(len(arr))
     if (len(arr) != size + 2):
         print_ko("Druid not speaking enough")
         return False
@@ -24,6 +25,6 @@ def check_druid_array(arr, size):
 
 def check_druid():
     print_yellow("<=====> Druid tests <=====>")
-    trace = execute_and_get_trace(get_random_params(2, 2, 100, 15))
+    trace = execute_and_get_trace(get_random_params(21, 1, 1, 20))
     arr = get_arr_of_villager(trace, "Druid:")
-    return check_druid_array(arr, 15)
+    return check_druid_array(arr, 20)

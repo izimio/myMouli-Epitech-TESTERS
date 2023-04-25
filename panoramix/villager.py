@@ -2,7 +2,8 @@ from utils import *
 
 
 def check_all_villagers_are_here():
-    trace = execute_and_get_trace(get_random_params(21, 1, 1, 1))
+    
+    trace = execute_and_get_trace(get_random_params(21, 50, 1, 1))
     plain_trace = "\n".join(trace)
 
     for i in range(21):
@@ -12,8 +13,7 @@ def check_all_villagers_are_here():
     print_ok("All villagers are here")
 
 def check_all_villagers_comes_and_goes():
-    trace = execute_and_get_trace(get_random_params(21, 1, 1, 1))
-
+    trace = execute_and_get_trace(get_random_params(21, 50, 1, 1))
     for i in range(21):
         arr = get_arr_of_villager(trace, "Villager " + str(i) + ":")
         if (len(arr) < 2):

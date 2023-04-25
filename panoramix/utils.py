@@ -3,6 +3,7 @@ import os
 import random
 
 def execute_and_get_trace(line):
+    print_grey("Testing on " + line)
     os.system("./panoramix " + line + " > trace")
     return open_file_content("trace").split("\n")
 
@@ -26,12 +27,18 @@ def print_grey(s):
     print("\033[90m" + s + "\033[0m")
 
 def print_ok(s):
-    print_green("\N{check mark} " + s)
+    print_green("\N{check mark} " + s + "\n")
 
 def print_ko(s):
-    print_red("\N{cross mark} " + s)
+    print_red("\N{cross mark} " + s + "\n")
 
-def get_random_params(nb_villagers= random.randint(1, 50), pot_size= random.randint(1, 50), nb_fight= random.randint(1, 50), nb_refills= random.randint(1, 50)):
+def get_random_params(nb_villagers= random.randint(1, 20), pot_size= random.randint(10, 50), nb_fight= random.randint(1, 10), nb_refills= random.randint(1, 15)):
+    while nb_villagers * nb_fight > (pot_size * nb_refills + 1):
+        nb_villagers= random.randint(1, 20)
+        pot_size= random.randint(1, 50)
+        nb_fight= random.randint(1, 10)
+        nb_refills= random.randint(1, 15)
+
     s = ""
     s += str(nb_villagers) + " "
     s += str(pot_size) + " "
