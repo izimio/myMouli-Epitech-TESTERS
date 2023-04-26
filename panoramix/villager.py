@@ -22,7 +22,7 @@ def check_all_villagers_comes_and_goes():
         if (arr[0] != "Villager " + str(i) + ": Going into battle!"):
             print_ko("Villager " + str(i) + " never came to battle :(")
             return False
-        if (arr[-1] != "Villager " + str(i) + ": I'm going to sleep"):
+        if (arr[-1] != "Villager " + str(i) + ": I'm going to sleep now."):
             print_ko("Villager " + str(i) + " never went to sleep")
             return False
     print_ok("All villagers come and go")

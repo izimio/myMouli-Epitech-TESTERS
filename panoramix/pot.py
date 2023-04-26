@@ -47,6 +47,25 @@ def check_no_over_portion():
     if err == 0:
         print_ok("2/2 OK | No villager over portionned or under portionned")
 
+def check_no_out_of_portion():
+    trace = execute_and_get_trace(get_random_params(10, 5, 7, 20))
+    pot = 5
+    reffils = 20
+    for line in trace:
+        if "I need a drink... I see " in line:
+            pot -= 1
+            if pot < 0 and not "I need a drink... I see 0 servings left." in line:
+                print_ko("Pot is out of portion")
+                return False
+        if "Hey Pano wake up! We need more potion." in line:
+            if reffils == 0:
+                print_ko("Pot is out of portion and villagers still want to drink")
+                return False
+            reffils -= 1
+            pot = 5
+    print_ok("OK Pot is never out of portion")
+
 def check_pot():
     print_yellow("<=====> Pot tests <=====>")
     check_no_over_portion()
+    check_no_out_of_portion()

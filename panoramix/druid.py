@@ -9,7 +9,6 @@ def get_druid_phrase(max, nb):
 
 def check_druid_array(arr, size):
     max = size
-    print(len(arr))
     if (len(arr) != size + 2):
         print_ko("Druid not speaking enough")
         return False
