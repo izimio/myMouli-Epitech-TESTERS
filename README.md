@@ -8,6 +8,7 @@ Here's a list of projects for which we've crafted automated tests with care:
 
 - nm/objdump
 - libasm
+- myFTP
 - panoramix
 - wolfram
 - HaskellPoolRush
